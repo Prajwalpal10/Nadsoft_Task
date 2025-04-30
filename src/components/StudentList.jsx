@@ -75,17 +75,14 @@ const StudentList = () => {
 
   return (
     <div className="container mt-4 w-75 ">
-      <h2 className="mb-4">Student List</h2>
+      <h2 className="mb-4">All Student List</h2>
 
       <div className="d-flex justify-content-between mb-3">
         <div>
           <strong>Total Records:</strong> {meta.totalRecords}
         </div>
         <div className="d-flex align-items-center mb-2">
-  <input
-    type="number"
-    placeholder="Search by Student ID"
-    className="form-control me-2"
+  <input   type="number"  placeholder="Search by Student ID" className="form-control me-2"
     style={{ width: '250px' }}
     value={searchId}
     onChange={(e) => setSearchId(e.target.value)}
@@ -101,7 +98,7 @@ const StudentList = () => {
         </button>
       </div>
 
-      {/* Add/Edit Student Form Modal */}
+      {/*PopUp Modal*/}
       <Modal show={showForm} onHide={handleModalClose}>
         <Modal.Header closeButton>
           <Modal.Title>{selectedStudent ? 'Edit Student' : 'Add New Student'}</Modal.Title>
@@ -114,20 +111,21 @@ const StudentList = () => {
         </Modal.Body>
       </Modal>
 
-      {/* Student Table */}
+      {}
       <table className="table table-bordered table-hover">
         <thead className="table-dark">
         <tr>
-  <th>ID</th>
-  <th>Full Name</th>
-  <th>Email</th>
-  <th>Marks</th>
-  <th>Actions</th>
-</tr>
+            <th>ID</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Marks</th>
+            <th>Actions</th>
+          </tr>
 
         </thead>
         <tbody>
-          {students.length > 0 ? (
+          {
+          students.length > 0 ? (
             students.map((student) => (
               <tr key={student.student_id}>
               <td>{student.student_id}</td>
@@ -149,15 +147,15 @@ const StudentList = () => {
         </tbody>
       </table>
 
-      {/* Pagination */}
+      {/* Pagination component added*/}
       <Pagination
-  currentPage={page}
-  totalPages={meta?.totalPages || 1}
-  onPageChange={(newPage) => {
-    setPage(newPage);
-    fetchStudents(newPage);
-  }}
-/>
+            currentPage={page}
+            totalPages={meta?.totalPages || 1}
+            onPageChange={(newPage) => {
+                      setPage(newPage);
+                      fetchStudents(newPage);
+                     }}
+      />
 
     </div>
   );

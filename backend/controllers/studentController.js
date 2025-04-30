@@ -50,7 +50,7 @@ const getAllStudents = async (req, res) => {
     let query = `
       SELECT s.*, m.marks_obtained
       FROM students s
-      LEFT JOIN marks m ON s.student_id = m.student_id
+      LEFT JOIN marks m ON s.student_id = m.student_id 
     `;
     let countQuery = 'SELECT COUNT(*) FROM students';
     const params = [];
